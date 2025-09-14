@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Forecast Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="container">
+                <h1>Cryptocurrency Forecast Dashboard</h1>
+                <p class="subtitle">AI-Powered Price Predictions & Real Data Integration Until 2029</p>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <div class="form-group">
+                        <label for="crypto-select" class="form-label">Cryptocurrency</label>
+                        <select id="crypto-select" class="form-control">
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="DOGE">Dogecoin (DOGE)</option>
+                            <option value="GOLD">Gold (GOLD)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start-date" class="form-label">Start Date</label>
+                        <input type="date" id="start-date" class="form-control" min="2025-08-09" max="2029-12-31">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end-date" class="form-label">End Date</label>
+                        <input type="date" id="end-date" class="form-control" min="2025-08-09" max="2029-12-31">
+                    </div>
+
+                    <div class="date-error" id="date-error" style="display: none;">
+                        <span class="status status--error">End date must be after start date</span>
+                    </div>
+
+                    <button id="generate-forecast" class="btn btn--primary btn--full-width">
+                        <span id="btn-text">Generate Forecast</span>
+                        <span id="btn-loading" style="display: none;">Loading...</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Metrics Grid -->
+                <section class="metrics-section">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-label">Current Price</div>
+                                <div class="data-type data-forecast" id="current-price-badge">FORECAST</div>
+                            </div>
+                            <div class="metric-value" id="current-price">$0.00</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-label">Predicted Price</div>
+                                <div class="data-type data-forecast" id="predicted-price-badge">FORECAST</div>
+                            </div>
+                            <div class="metric-value" id="predicted-price">$0.00</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-label">Forecast Change</div>
+                                <div class="data-type data-forecast" id="forecast-change-badge">FORECAST</div>
+                            </div>
+                            <div class="metric-value" id="forecast-change">0.00%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-label">Forecast Period</div>
+                                <div class="data-type data-forecast" id="forecast-period-badge">FORECAST</div>
+                            </div>
+                            <div class="metric-value" id="forecast-period">0 days</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chart Section -->
+                <section class="chart-section">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="chart-header">
+                                <h3>Price Forecast Chart</h3>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #5D878F;"></div>
+                                        <span>Real Data</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color dashed" style="background-color: #FFC185;"></div>
+                                        <span>Forecast Data</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 400px;">
+                                <canvas id="forecast-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Data Table Section -->
+                <section class="table-section">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="table-header">
+                                <h3>Forecast Data</h3>
+                                <div class="pagination-info" id="pagination-info">
+                                    Showing 0 - 0 of 0 records
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="forecast-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Predicted Price</th>
+                                            <th>Daily Change</th>
+                                            <th>Change %</th>
+                                            <th>Trend</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table-body">
+                                        <!-- Table rows will be generated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="pagination" id="pagination">
+                                <!-- Pagination controls will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <h2 class="senti-title">Sentiment Analysis</h2>
+    <div class="sentiment-chart">
+        <img src="Ether Price vs Avg Sentiment Score over Time.png" alt="Sentiment Analysis">
+    </div>
+
+    <h2 class="senti-title">Ethereum Price vs Average Sentiment Score</h2>
+    <div class="sentiment-chart">
+        <img src="jan-jun2021 sentiment.png" alt="Sentiment Analysis">
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
